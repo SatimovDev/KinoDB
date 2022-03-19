@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams , useNavigate } from 'react-router-dom'
 
 export const Movie = ({movies}) => {
 
   const { id } = useParams()
+  const navigate = useNavigate()
 
 let movie = movies.filter(item => item.id === +id)[0]
 
@@ -30,7 +31,7 @@ if(!movie) return <button className='btn loading'></button>
         </ul>
         <div className="divider mt-10"></div>
         <p className='text-lg'>{movie.overview}</p>
-
+        <button onClick={() => navigate(-1)} className='btn btn-info mt-10 text-lg shadow-md'>Go Back</button>
     </div>
   </div>
 </div>
