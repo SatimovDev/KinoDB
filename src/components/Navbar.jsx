@@ -1,4 +1,4 @@
-	import React  ,{ useState } from 'react'
+	import React  ,{ useEffect, useState } from 'react'
 
 	export const Navbar = ({setSearch}) => {
 
@@ -9,6 +9,14 @@
 			setSearch(value)
 			setValue('')
 		}
+
+		useEffect(() => {
+			window.onkeydown = (event) => {
+				if(event.key == 'Enter'){
+					onSearch()
+				}
+			}
+		})
 
 		return (
 			<div className="navbar bg-base-300">
